@@ -1,0 +1,14 @@
+- name: kypo-user-access
+  src: https://gitlab.ics.muni.cz/muni-kypo-crp/backend-python/ansible-networking-stage/kypo-user-access.git
+  scm: git
+  version: 470b8b91
+
+- name: kypo-disable-qxl
+  src: https://gitlab.ics.muni.cz/muni-kypo/ansible-roles/disable-qxl.git
+  scm: git
+  version: 7981c7c4
+
+- name: sandbox-logging
+  src: https://gitlab.ics.muni.cz/muni-kypo/ansible-roles/sandbox-logging.git
+  scm: git
+  version: 5431051c

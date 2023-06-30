@@ -1,4 +1,4 @@
-name: kypo-crp-demo-training
+name: kypo-crp-demo-training-kali
 
 hosts:
   - name: server

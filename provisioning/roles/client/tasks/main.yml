@@ -12,6 +12,9 @@
      - nmap
      - hydra
      - medusa
+     - git
+     - python3-pip
+     - apache2
     update_cache: yes
 
 - name: Add passwords file to the home directory
@@ -21,4 +24,29 @@
     owner: user
     mode: 0644
 
+- name: Clone 'social-engineer-toolkit'
+  git:
+    repo: 'https://github.com/trustedsec/social-engineer-toolkit.git'
+    dest: /home/user/setoolkit/
+
+- name: Install requirements
+    shell: pip3 install -r requirements.txt
+    args:
+      chdir: /home/user/setoolkit/
+    
+- name: Run setup.py
+    shell: python setup.py
+    args:
+      chdir: /home/user/setoolkit/
+
+- name: Download metasploit
+  get_url:
+    url: https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb
+    dest: /home/user/msf/msfinstall
+    mode: '0755'
+
+- name: Run msfinstall script
+  shell: "./msfinstall"
+  args:
+    chdir: /home/user/msf
 ...

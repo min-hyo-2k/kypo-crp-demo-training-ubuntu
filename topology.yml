@@ -1,4 +1,4 @@
-name: kypo-crp-demo-training-kali
+name: kypo-crp-demo-training-ubuntu-lab-3
 
 hosts:
   - name: server
@@ -9,9 +9,9 @@ hosts:
 
   - name: client
     base_box: 
-      image: kali
-      man_user: debian
-    flavor: standard.large
+      image: ubuntu-focal-x86_64
+      man_user: ubuntu
+    flavor: standard.small
 
 routers:
   - name: router

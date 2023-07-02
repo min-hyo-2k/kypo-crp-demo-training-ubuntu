@@ -1,1 +1,1 @@
-# kypo-crp-demo-training-kali
+# kypo-crp-demo-training-ubuntu

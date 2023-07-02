@@ -11,15 +11,6 @@
             name: kypo-disable-qxl
         when: ansible_os_family == 'Debian'
 
-- name: set up server
-  hosts: server
-  become: yes
-  roles:
-    - name: server
-      telnet_port: "{{ telnet_port }}"
-      flag: "{{ alice_flag }}"
-      flag_2: "{{ root_flag }}"
-
 - name: set up client
   hosts: client
   become: yes

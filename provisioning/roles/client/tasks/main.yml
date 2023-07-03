@@ -8,13 +8,6 @@
      - apache2
     update_cache: yes
 
-- name: Add passwords file to the home directory
-  copy:
-    src: passlist.txt
-    dest: /home/user/passlist.txt
-    owner: user
-    mode: 0644
-
 - name: Clone 'social-engineer-toolkit'
   git:
     repo: 'https://github.com/trustedsec/social-engineer-toolkit.git'

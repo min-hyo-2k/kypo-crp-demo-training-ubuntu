@@ -1,0 +1,4 @@
+username: server
+password: password
+telnet_port: 2323
+flag: "Top_Secret_Flag"

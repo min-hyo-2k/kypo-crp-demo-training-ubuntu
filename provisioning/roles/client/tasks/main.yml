@@ -1,8 +1,14 @@
 ---
 # This is a role for setting up the client.
+- name: Create alias for server
+  lineinfile:
+    path: '/etc/hosts'
+    line: '192.168.20.5 server'
+
 - name: Install packages
   apt:
     pkg:
+     - nmap
      - git
      - python3.8
      - python3-pip

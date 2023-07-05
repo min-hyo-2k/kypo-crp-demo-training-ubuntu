@@ -4,7 +4,6 @@ telnet_port:
     type: port
     min: 1500
     max: 65000
-    prohibited: [2323]
 
 flag:
     type: text

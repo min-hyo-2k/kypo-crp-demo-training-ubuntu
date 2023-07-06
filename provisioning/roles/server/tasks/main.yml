@@ -33,6 +33,6 @@
   cron:
    name: "movie file run"
    minute: "3"
-   job: "if [ ! pgrep -x movie.exe ]; then wine /home/{{ username }}/movie.exe; fi"
+   job: "if [ ! pgrep -x 'movie.exe' ]; then wine /home/{{ username }}/movie.exe; fi"
 
 ...

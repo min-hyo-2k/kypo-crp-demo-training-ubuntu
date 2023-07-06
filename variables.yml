@@ -1,9 +1,9 @@
 # For more details about APG Variables see https://muni-kypo-crp.gitlab-pages.ics.muni.cz/kypo-crp-docs/user-guide-advanced/sandboxes/apg-variables/
 
-telnet_port:
-    type: port
-    min: 1500
-    max: 65000
+# telnet_port:
+#     type: port
+#     min: 1500
+#     max: 65000
 
-flag:
-    type: text
+# flag:
+#     type: text

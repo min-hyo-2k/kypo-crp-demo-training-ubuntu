@@ -15,9 +15,11 @@
   hosts: server
   become: yes #Ansible should use privilege escalation to execute the tasks with administrative privileges.
   roles:
+    - name: kypo-user-access
+      kypo_user_access_username: server
+      kypo_user_access_password: password
+      kypo_user_access_sudo: True
     - name: server
-      telnet_port: "{{ telnet_port }}"
-      flag: "{{ flag }}"
 
 - name: set up client
   hosts: client

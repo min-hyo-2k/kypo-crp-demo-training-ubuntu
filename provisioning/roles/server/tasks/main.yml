@@ -7,7 +7,6 @@
      - wget
      - net-tools
      - wine
-     - wine32
      - libwine
     update_cache: yes
 

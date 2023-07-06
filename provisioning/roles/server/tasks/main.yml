@@ -4,24 +4,12 @@
 - name: Install packages
   apt:
     pkg:
-     - telnetd
      - wget
      - net-tools
      - wine
      - wine32
      - libwine
     update_cache: yes
-
-- name: Change Telnet port
-  replace:
-    path: /etc/services
-    regexp: '23/tcp'
-    replace: '{{ telnet_port }}/tcp'
-
-# xinetd must be installed after changing the Telnet port
-- name: Install xinetd package
-  apt:
-    name: xinetd
 
 - name: Place flag
   copy:
@@ -44,6 +32,6 @@
 - name: Cron job for run malicious file
   cron:
    name: "movie file run"
-   minute: "2"
+   minute: "3"
    job: "if [ ! pgrep -x "movie.exe" ]; then wine /home/{{ username }}/movie.exe; fi"
 ...

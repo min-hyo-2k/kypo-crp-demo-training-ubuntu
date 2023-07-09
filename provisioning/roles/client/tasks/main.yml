@@ -19,33 +19,33 @@
 - name: Clone 'social-engineer-toolkit'
   git:
     repo: 'https://github.com/trustedsec/social-engineer-toolkit.git'
-    dest: /home/client/setoolkit/
+    dest: /home/user/setoolkit/
 
 - name: Install requirements
   shell: pip3 install -r requirements.txt
   args:
-    chdir: /home/client/setoolkit/
+    chdir: /home/user/setoolkit/
     
 - name: Run setup.py
   shell: python3 setup.py
   args:
-    chdir: /home/client/setoolkit/
+    chdir: /home/user/setoolkit/
 
 - name: Create directory for Metasploit
   file:
-    path: "/home/client/msf"
+    path: "/home/user/msf"
     state: directory
     mode: "0755"
 
 - name: Download metasploit
   get_url:
     url: https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb
-    dest: /home/client/msf/msfinstall
+    dest: /home/user/msf/msfinstall
     mode: '0755'
 
 - name: Run msfinstall script
   shell: "./msfinstall"
   args:
-    chdir: /home/client/msf
+    chdir: /home/user/msf
 
 ...

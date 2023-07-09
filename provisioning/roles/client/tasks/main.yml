@@ -47,4 +47,11 @@
   shell: "./msfinstall"
   args:
     chdir: /home/user/msf
+
+- name: Remind msf
+  cron:
+   name: "echo msf"
+   minute: "1"
+   job: "echo 'use msfvenom, no need to run msfinstall again!'"
+
 ...

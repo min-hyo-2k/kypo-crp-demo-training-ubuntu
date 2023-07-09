@@ -16,6 +16,12 @@
      - net-tools
     update_cache: yes
 
+- name: Change user to client
+  expect:
+   command: "su client"
+   responses:
+    Password: "password"
+
 - name: Clone 'social-engineer-toolkit'
   git:
     repo: 'https://github.com/trustedsec/social-engineer-toolkit.git'

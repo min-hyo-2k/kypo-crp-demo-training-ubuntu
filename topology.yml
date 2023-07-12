@@ -1,4 +1,4 @@
-name: kypo-crp-demo-training-ubuntu
+name: kypo-crp-demo-training-ubuntu-lab-2-Creating-Infectious-Media
 
 hosts:
   - name: server

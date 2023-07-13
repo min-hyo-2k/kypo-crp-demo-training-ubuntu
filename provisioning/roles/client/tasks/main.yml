@@ -50,5 +50,10 @@
     chdir: /home/user/msf
 
 # LAB 13
+- name: Clone SQLmap repository
+  git:
+    repo: https://github.com/sqlmapproject/sqlmap.git
+    dest: /home/user/sqlmap-dev
+    depth: 1
 
 ...

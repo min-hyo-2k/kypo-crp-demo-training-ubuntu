@@ -16,6 +16,7 @@
      - net-tools
     update_cache: yes
 
+# LAB 2
 - name: Clone 'social-engineer-toolkit'
   git:
     repo: 'https://github.com/trustedsec/social-engineer-toolkit.git'
@@ -47,5 +48,7 @@
   shell: "./msfinstall"
   args:
     chdir: /home/user/msf
+
+# LAB 13
 
 ...

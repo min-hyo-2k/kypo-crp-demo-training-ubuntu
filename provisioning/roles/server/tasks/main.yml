@@ -8,6 +8,7 @@
      - net-tools
      - wine
      - libwine
+     - apache2
     update_cache: yes
 
 - name: Place flag

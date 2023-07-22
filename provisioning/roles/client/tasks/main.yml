@@ -14,6 +14,7 @@
      - python3-pip
      - apache2
      - net-tools
+     - sqlmap
     update_cache: yes
 
 # LAB 2

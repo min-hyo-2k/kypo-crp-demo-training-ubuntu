@@ -14,7 +14,6 @@
      - python3-pip
      - apache2
      - net-tools
-     - sslstrip
     update_cache: yes
 
 - name: Clone 'social-engineer-toolkit'

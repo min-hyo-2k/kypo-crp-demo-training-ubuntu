@@ -48,4 +48,17 @@
   args:
     chdir: /home/user/msf
 
+- name: Install twisted python-module
+  shell: pip3 install twisted
+
+- name: Install sslstrip
+  git:
+    repo: https://github.com/moxie0/sslstrip.git
+    dest: /home/user/sslstrip/
+
+- name: Run sslstrip
+  shell: python3 setup.py install
+  args:
+    chdir: /home/user/sslstrip/
+
 ...

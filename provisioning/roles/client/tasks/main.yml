@@ -14,6 +14,7 @@
      - python3-pip
      - apache2
      - net-tools
+     - python2.7.18
     update_cache: yes
 
 - name: Clone 'social-engineer-toolkit'
@@ -51,21 +52,13 @@
 - name: Install twisted python-module
   shell: pip3 install twisted
 
-- name: convert python 2 to 3 module
-  shell: pip3 install 2to3
-
 - name: Install sslstrip
   git:
     repo: https://github.com/moxie0/sslstrip.git
     dest: /home/user/sslstrip/
 
-- name: convert sslstrip code py2 to py3
-  shell: python3 2to3 -w .
-  args:
-    chdir: /home/user/sslstrip/
-
 - name: Run sslstrip
-  shell: python3 setup.py install
+  shell: python2 setup.py install
   args:
     chdir: /home/user/sslstrip/
 

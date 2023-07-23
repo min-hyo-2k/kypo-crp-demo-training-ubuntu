@@ -60,7 +60,7 @@
     dest: /home/user/sslstrip/
 
 - name: convert sslstrip code py2 to py3
-  shell: python3 2to3.-w
+  shell: python3 -m 2to3 -w .
   args:
     chdir: /home/user/sslstrip/
 

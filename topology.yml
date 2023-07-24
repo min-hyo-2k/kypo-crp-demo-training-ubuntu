@@ -22,26 +22,26 @@ routers:
 
 networks:
   - name: server-switch
-    cidr: 192.168.40.0/24
+    cidr: 192.168.20.0/24
     accessible_by_user: True
 
   - name: client-switch
-    cidr: 192.168.50.0/24
+    cidr: 192.168.30.0/24
 
 net_mappings:
     - host: server
       network: server-switch
-      ip: 192.168.40.5
+      ip: 192.168.20.5
     - host: client
       network: client-switch
-      ip: 192.168.50.5
+      ip: 192.168.30.5
 
 router_mappings:
     - router: router
       network: server-switch
-      ip: 192.168.40.1
+      ip: 192.168.20.1
     - router: router
       network: client-switch
-      ip: 192.168.50.1
+      ip: 192.168.30.1
 
 groups: []

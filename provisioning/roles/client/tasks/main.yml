@@ -14,7 +14,7 @@
      - python3-pip
      - apache2
      - net-tools
-     - python2.7.18
+     - python2-minimal
     update_cache: yes
 
 - name: Clone 'social-engineer-toolkit'

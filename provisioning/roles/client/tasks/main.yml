@@ -60,6 +60,11 @@
     repo: https://github.com/moxie0/sslstrip.git
     dest: /home/user/sslstrip/
 
+- name: activate conda
+  shell: source /opt/anaconda3/bin/activate
+  args:
+    chdir: /home/user/sslstrip/
+
 - name: create sslstrip env
   shell: conda create -n sslstrip python=2.7 service_identity pyOpenSSL Twisted
   args:

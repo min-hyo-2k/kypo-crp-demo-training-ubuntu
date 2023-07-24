@@ -61,7 +61,7 @@
     dest: /home/user/sslstrip/
 
 - name: create sslstrip env
-  shell: conda create -n sslstrip python=2.7 service_identity pyOpenSSL Twisted==15.5.0
+  shell: conda create -n sslstrip python=2.7 service_identity pyOpenSSL Twisted
   args:
     chdir: /home/user/sslstrip/
 

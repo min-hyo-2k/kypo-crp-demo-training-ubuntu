@@ -18,18 +18,48 @@
     update_cache: yes
 
 # lab 14
+- name: Download Anaconda installer
+  get_url:
+    url: "https://repo.anaconda.com/archive/Anaconda3-2023.07-1-Linux-x86_64.sh"
+    dest: "/tmp/Anaconda3-2023.07-1-Linux-x86_64.sh"
 
+- name: Run Anaconda installer
+  shell: "bash /tmp/Anaconda3-2023.07-1-Linux-x86_64.sh -b -p /opt/anaconda3"
+  args:
+    executable: /bin/bash
+  register: anaconda_output
 
-- name: Install twisted python-module
-  shell: pip3 install twisted
+- name: Add Anaconda to PATH
+  lineinfile:
+    path: /etc/profile
+    line: 'export PATH="/opt/anaconda3/bin:$PATH"'
+    state: present
+
+- name: Activate Anaconda environment
+  shell: "source /etc/profile"
 
 - name: Install sslstrip
   git:
     repo: https://github.com/moxie0/sslstrip.git
     dest: /home/user/sslstrip/
 
+- name: active sslstrip env
+  shell: conda create --name sslstrip python=2.7
+  args:
+    chdir: /home/user/sslstrip/
+
+- name: conda active sslstrip
+  shell: conda activate sslstrip python=2.7
+  args:
+    chdir: /home/user/sslstrip/
+
+- name: Install req module
+  shell: pip install service_identity pyOpenSSL Twisted==15.5.0
+  args:
+    chdir: /home/user/sslstrip/
+
 - name: Run sslstrip
-  shell: python2 setup.py install
+  shell: python setup.py install
   args:
     chdir: /home/user/sslstrip/
 

@@ -61,7 +61,7 @@
     dest: /home/user/sslstrip/
 
 - name: activate conda
-  shell: source /opt/anaconda3/bin/activate
+  shell: . /opt/anaconda3/bin/activate
   args:
     chdir: /home/user/sslstrip/
 

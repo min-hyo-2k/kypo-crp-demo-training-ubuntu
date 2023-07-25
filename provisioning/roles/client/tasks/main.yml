@@ -15,6 +15,7 @@
      - apache2
      - net-tools
      - python2-minimal
+     - curl
     update_cache: yes
 
 # lab 14

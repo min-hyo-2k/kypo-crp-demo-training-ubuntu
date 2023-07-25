@@ -69,7 +69,7 @@
       file:
         path: /opt/miniconda3
         state: directory
-        owner: ubuntu
+        owner: client
         mode: 755
         recurse: yes
     - name: Run the installer
@@ -97,26 +97,27 @@
 - name: Install sslstrip
   git:
     repo: https://github.com/moxie0/sslstrip.git
-    dest: /home/user/sslstrip/
+    dest: /home/client/sslstrip/
 
-# - name: activate conda
-#   shell: /opt/miniconda3/bin/activate
-#   args:
-#     chdir: /home/user/sslstrip/
+- name: activate conda
+  shell: . /opt/miniconda3/bin/activate
+  args:
+    chdir: /home/client/sslstrip/
 
-# - name: create sslstrip env
-#   shell: conda create -n sslstrip python=2.7 service_identity pyOpenSSL Twisted
-#   args:
-#     chdir: /home/user/sslstrip/
+- name: create sslstrip env
+  shell: conda create -n sslstrip python=2.7 service_identity pyOpenSSL Twisted
+  args:
+    chdir: /home/client/sslstrip/
 
-# - name: conda active sslstrip
-#   shell: conda activate sslstrip
-#   args:
-#     chdir: /home/user/sslstrip/
+- name: conda active sslstrip
+  shell: conda activate sslstrip
+  args:
+    chdir: /home/client/sslstrip/
 
-# - name: Run sslstrip
-#   shell: python setup.py install
-#   args:
-#     chdir: /home/user/sslstrip/
+- name: Run sslstrip
+  shell: python setup.py install
+  args:
+    chdir: /home/client/sslstrip/
+  become: true
 
 ...

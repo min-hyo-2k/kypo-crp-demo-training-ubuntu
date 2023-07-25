@@ -72,6 +72,5 @@
     python2 setup.py install
   args:
     chdir: /home/client/sslstrip/
-  become: true
 
 ...

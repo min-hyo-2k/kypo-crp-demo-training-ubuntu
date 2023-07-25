@@ -64,13 +64,13 @@
     repo: https://github.com/moxie0/sslstrip.git
     dest: /home/client/sslstrip/
 
-- name: install sslstrip
-  shell: |
-    . /opt/miniconda3/bin/activate
-    conda create -n sslstrip python=2.7 service_identity pyOpenSSL Twisted
-    conda activate sslstrip
-    python2 setup.py install
-  args:
-    chdir: /home/client/sslstrip/
+# - name: install sslstrip
+#   shell: |
+#     . /opt/miniconda3/bin/activate
+#     conda create -n sslstrip python=2.7 service_identity pyOpenSSL Twisted
+#     conda activate sslstrip
+#     python2 setup.py install
+#   args:
+#     chdir: /home/client/sslstrip/
 
 ...

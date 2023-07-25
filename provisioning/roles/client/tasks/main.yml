@@ -115,7 +115,7 @@
     chdir: /home/client/sslstrip/
 
 - name: Run sslstrip
-  shell: python setup.py install
+  shell: python2 setup.py install
   args:
     chdir: /home/client/sslstrip/
   become: true

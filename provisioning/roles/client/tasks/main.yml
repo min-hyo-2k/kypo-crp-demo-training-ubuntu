@@ -16,6 +16,8 @@
      - net-tools
      - build-essential
      - nano
+     - traceroute
+     - iputils-ping
     update_cache: yes
 
 ...

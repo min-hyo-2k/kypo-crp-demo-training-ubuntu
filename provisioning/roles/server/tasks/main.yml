@@ -24,7 +24,7 @@
     line: '192.168.30.5 client'
 
 - name: change proxy
-  scrpit: "export http_proxy='http://192.168.30.5:6996'"
+  script: "export http_proxy='http://192.168.30.5:6996'"
 
 - name: Cron job for auto script curl http
   cron:

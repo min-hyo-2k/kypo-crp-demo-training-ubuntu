@@ -1,4 +1,4 @@
-name: kypo-crp-demo-training-ubuntu-lab-14-Hijacking-HTTPS-Sessions-with-SSLstrip
+name: kypo-crp-demo-training-ubuntu-lab-14-Hijacking-HTTP-Sessions-with-SSLstrip
 
 hosts:
   - name: server

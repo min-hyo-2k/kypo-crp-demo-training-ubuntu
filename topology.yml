@@ -1,4 +1,4 @@
-name: kypo-crp-demo-training-ubuntu-lab-5-C-Programming-on-Linux
+name: kypo-crp-demo-training-ubuntu-lab-5-C-Programming-on-Linux-and-Buffer-Overflow
 
 hosts:
   - name: server

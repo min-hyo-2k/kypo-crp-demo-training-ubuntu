@@ -36,17 +36,19 @@
 
 - name: Complie buffer1
   command: gcc buffer1.c -o buffer1
-  become: yes
-  become_user: user
   args:
     chdir: /home/client/
 
 - name: Complie buffer2
   command: g++ buffer2.cpp -o buffer2
-  become: yes
-  become_user: user
   args:
     chdir: /home/client/
+
+# - name: Change owner of the file
+#   file:
+#     path: /path/to/your/file.txt
+#     owner: your_new_owner
+#     state: file
 
 - name: Change permissions (chmod) of the file buffer1
   file:

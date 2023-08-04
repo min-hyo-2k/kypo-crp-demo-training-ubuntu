@@ -22,30 +22,16 @@
 
 - name: Copy buffer1
   copy:
-    src: buffer1.c
-    dest: /home/client/buffer1.c
+    src: buffer1
+    dest: /home/client/buffer1
     owner: user
     mode: '0711'
 
 - name: Copy buffer2
   copy:
-    src: buffer2.cpp
-    dest: /home/client/buffer2.cpp
+    src: buffer2
+    dest: /home/client/buffer2
     owner: user
     mode: '0711'
-
-- name: Complie buffer1
-  shell: gcc buffer1.c -o buffer1 ; chmod 0711 buffer1
-  become: yes
-  become_user: user
-  args:
-    chdir: /home/client/
-
-- name: Complie buffer2
-  shell: g++ buffer2.cpp -o buffer2 ; chmod 0711 buffer2
-  become: yes
-  become_user: user
-  args:
-    chdir: /home/client/
 
 ...

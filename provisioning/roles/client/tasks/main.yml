@@ -21,7 +21,7 @@
 - name: Clone SQLmap repository
   git:
     repo: https://github.com/sqlmapproject/sqlmap.git
-    dest: /home/user/sqlmap-dev
+    dest: /home/client/sqlmap-dev
     depth: 1
 
 ...

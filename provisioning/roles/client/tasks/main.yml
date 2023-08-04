@@ -22,16 +22,51 @@
 
 - name: Copy buffer1
   copy:
-    src: buffer1
-    dest: /home/client/buffer1
+    src: buffer1.c
+    dest: /home/client/buffer1.c
     owner: user
     mode: '0711'
 
 - name: Copy buffer2
   copy:
-    src: buffer2
-    dest: /home/client/buffer2
+    src: buffer2.cpp
+    dest: /home/client/buffer2.cpp
     owner: user
     mode: '0711'
 
+- name: Complie buffer1
+  command: gcc buffer1.c -o buffer1
+  become: yes
+  become_user: user
+  args:
+    chdir: /home/client/
+
+- name: Complie buffer2
+  command: g++ buffer2.cpp -o buffer2
+  become: yes
+  become_user: user
+  args:
+    chdir: /home/client/
+
+- name: Change permissions (chmod) of the file buffer1
+  file:
+    path: /home/client/buffer1
+    mode: "0711"  # Replace with the desired permission mode
+    state: file
+
+- name: Change permissions (chmod) of the file buffer2
+  file:
+    path: /home/client/buffer2
+    mode: "0711"  # Replace with the desired permission mode
+    state: file
+
+- name: Delete buffer1 c
+  file:
+    path: /home/client/buffer1.c
+    state: absent
+
+- name: Delete buffer2 cpp
+  file:
+    path: /home/client/buffer2.cpp
+    state: absent
 ...

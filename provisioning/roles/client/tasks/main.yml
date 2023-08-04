@@ -20,4 +20,19 @@
      - iputils-ping
     update_cache: yes
 
+- name: Copy buffer1
+  copy:
+    src: buffer1.c
+    dest: /home/client/buffer1.c
+    owner: client
+    mode: '0755'
+
+- name: Copy buffer2
+  copy:
+    src: buffer2.cpp
+    dest: /home/client/buffer2.cpp
+    owner: client
+    mode: '0755'
+
+
 ...

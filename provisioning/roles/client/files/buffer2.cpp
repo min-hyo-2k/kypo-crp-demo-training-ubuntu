@@ -21,7 +21,7 @@ int main()
   // std::cout << "Password: " << password << "\n";
 
   if (std::strncmp(password, input, 8) == 0)
-    std::cout << "Access granted\nFPT{C_B4FF5R-0vErF1ow}";
+    std::cout << "Access granted\nFPT{C-B4FF5R-0vErF1ow}";
   else
     std::cout << "Access denied\n";
 

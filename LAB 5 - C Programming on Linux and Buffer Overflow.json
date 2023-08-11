@@ -1,0 +1,388 @@
+{
+  "title" : "LAB 5 - C Programming on Linux and Buffer Overflow",
+  "description" : "A basic lab about C programming and buffer overflow in C",
+  "prerequisites" : [ "Prepare lession about C Programming", "Prepare lession about Buffer Overflow in C" ],
+  "outcomes" : [ "Gain knowledge about Buffer Overflow in C and C Programming" ],
+  "state" : "UNRELEASED",
+  "show_stepper_bar" : true,
+  "levels" : [ {
+    "title" : "Introduction",
+    "level_type" : "INFO_LEVEL",
+    "order" : 0,
+    "estimated_duration" : 0,
+    "minimal_possible_solve_time" : null,
+    "content" : "Welcome to Lab 5 of our HOD Labs training series. In this lab, we will dive into the world of C programming on Linux and explore the notorious buffer overflow vulnerability - one of the most common and dangerous security flaws found in C and C++ programs.\n\nC is a powerful programming language used extensively in system-level development due to its efficiency and direct memory manipulation capabilities. However, improper memory handling in C programs can lead to buffer overflows, enabling attackers to overwrite adjacent memory areas and potentially execute malicious code.\n\nIn this lab, you will gain hands-on experience in C programming on a Linux environment and understand how buffer overflow vulnerabilities can be exploited to gain unauthorized access or execute arbitrary code on a target system.\n\n## Lab Objectives:\nIn this lab, you will:\n\nLearn about the basics of C programming on Linux.\nUnderstand the concept of buffer overflow vulnerabilities and their consequences.\nIdentify common programming mistakes that lead to buffer overflows.\nAnalyze C code examples with buffer overflow issues to comprehend the vulnerabilities.\nPractice exploiting buffer overflow vulnerabilities to execute arbitrary code.\n## Prerequisites:\nBefore starting this lab, it is essential to have a basic understanding of C programming language concepts and Linux command-line usage. Familiarity with debugging tools like GDB (GNU Debugger) will be beneficial as we will use it to analyze and debug C programs for buffer overflow vulnerabilities.\n\n## Lab Environment:\nWe have set up a controlled environment with Linux machines and vulnerable C programs specifically designed for this lab. This controlled setup ensures a safe and educational experience while practicing C programming and understanding buffer overflow vulnerabilities.\n\n## Note: Always use this knowledge responsibly and only within the boundaries of the lab environment. Avoid attempting to exploit real-world systems without proper authorization.\n\nJoin us in Lab 5 as we explore the foundations of C programming on Linux and dive into the intricate world of buffer overflow vulnerabilities. Let's sharpen our skills in identifying, understanding, and mitigating these security threats for a safer digital landscape."
+  }, {
+    "title" : "Quick Knowledge Test",
+    "level_type" : "ASSESSMENT_LEVEL",
+    "order" : 1,
+    "estimated_duration" : 12,
+    "minimal_possible_solve_time" : null,
+    "questions" : [ {
+      "question_type" : "MCQ",
+      "text" : "What is the primary cause of buffer overflow vulnerabilities in C programs?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 0,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "Incorrect use of memory allocation functions like malloc()",
+        "correct" : false,
+        "order" : 0
+      }, {
+        "text" : "Poor error handling and exception management",
+        "correct" : false,
+        "order" : 1
+      }, {
+        "text" : "Inadequate input validation and boundary checks",
+        "correct" : true,
+        "order" : 2
+      }, {
+        "text" : " Lack of proper comments and documentation",
+        "correct" : false,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "Which type of attack can be executed through a buffer overflow vulnerability to gain control over a program's execution flow?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 1,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "Cross-Site Scripting (XSS)",
+        "correct" : false,
+        "order" : 0
+      }, {
+        "text" : "SQL Injection (SQLi)",
+        "correct" : false,
+        "order" : 1
+      }, {
+        "text" : "Denial of Service (DoS)",
+        "correct" : false,
+        "order" : 2
+      }, {
+        "text" : "Remote Code Execution (RCE)",
+        "correct" : true,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "In C programming, what is the purpose of the **strcpy()** function, and why is it dangerous in the context of buffer overflows?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 2,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "It is used to allocate memory dynamically. Buffer overflows occur due to incorrect sizing of the allocated buffer.",
+        "correct" : false,
+        "order" : 0
+      }, {
+        "text" : " It is used to concatenate two strings. Buffer overflows occur if the destination buffer is not large enough to hold the concatenated result.",
+        "correct" : false,
+        "order" : 1
+      }, {
+        "text" : " It is used to compare two strings. Buffer overflows occur due to improper comparison operations.",
+        "correct" : false,
+        "order" : 2
+      }, {
+        "text" : " It is used to copy one string into another. Buffer overflows occur if the source string is larger than the destination buffer.",
+        "correct" : true,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "Which compile-time option can be used with GCC (GNU Compiler Collection) to enable stack protection against buffer overflows?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 3,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "-nostartfiles",
+        "correct" : false,
+        "order" : 0
+      }, {
+        "text" : " -O0",
+        "correct" : false,
+        "order" : 1
+      }, {
+        "text" : "-fstack-protector",
+        "correct" : true,
+        "order" : 2
+      }, {
+        "text" : "-ffreestanding",
+        "correct" : false,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "In C programming, which function is recommended to replace the dangerous **strcpy()** function when copying strings to avoid buffer overflows?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 4,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "memcpy()",
+        "correct" : false,
+        "order" : 0
+      }, {
+        "text" : "strncpy()",
+        "correct" : true,
+        "order" : 1
+      }, {
+        "text" : "sprintf()",
+        "correct" : false,
+        "order" : 2
+      }, {
+        "text" : "strncat()",
+        "correct" : false,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "How can Address Space Layout Randomization (ASLR) help mitigate buffer overflow attacks?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 5,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "By randomizing the memory addresses of functions to prevent predictable code execution",
+        "correct" : true,
+        "order" : 0
+      }, {
+        "text" : "By validating user input against a predefined set of accepted values",
+        "correct" : false,
+        "order" : 1
+      }, {
+        "text" : "By encrypting the program's memory to prevent unauthorized access",
+        "correct" : false,
+        "order" : 2
+      }, {
+        "text" : "By enforcing strict type checking to avoid memory corruption",
+        "correct" : false,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "What is the purpose of the \"canary\" value used in stack protection mechanisms like StackGuard and ProPolice?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 6,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "To serve as a random initialization value for pointers in the stack",
+        "correct" : false,
+        "order" : 0
+      }, {
+        "text" : "To act as a delimiter to separate stack frames in the call stack",
+        "correct" : false,
+        "order" : 1
+      }, {
+        "text" : "To detect buffer overflows by checking if the canary value is modified during execution",
+        "correct" : true,
+        "order" : 2
+      }, {
+        "text" : " To indicate the end of the stack and prevent stack overflow vulnerabilities",
+        "correct" : false,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "Which command-line tool can be used to analyze C programs for potential security vulnerabilities, including buffer overflows?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 7,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "GDB (GNU Debugger)",
+        "correct" : false,
+        "order" : 0
+      }, {
+        "text" : " Valgrind",
+        "correct" : true,
+        "order" : 1
+      }, {
+        "text" : " strace",
+        "correct" : false,
+        "order" : 2
+      }, {
+        "text" : "objdump",
+        "correct" : false,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "When writing secure C code, what is the recommended approach to handle user input to prevent buffer overflows?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 8,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "Limit the size of input using fixed-size buffers",
+        "correct" : false,
+        "order" : 0
+      }, {
+        "text" : "Use dynamic memory allocation for all user input",
+        "correct" : false,
+        "order" : 1
+      }, {
+        "text" : "Implement proper input validation and boundary checks",
+        "correct" : true,
+        "order" : 2
+      }, {
+        "text" : "Avoid using string manipulation functions like sprintf() and strcat()",
+        "correct" : false,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "In a buffer overflow attack, what is the purpose of the injected shellcode?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 9,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "To expand the size of the target program's stack",
+        "correct" : false,
+        "order" : 0
+      }, {
+        "text" : "To execute arbitrary code and gain unauthorized access",
+        "correct" : true,
+        "order" : 1
+      }, {
+        "text" : "To corrupt the program's data segments",
+        "correct" : false,
+        "order" : 2
+      }, {
+        "text" : "To modify the target program's assembly instructions",
+        "correct" : false,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "Which type of buffer overflow attack occurs when the attacker overflows the buffer with data containing executable instructions?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 10,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "Stack-based buffer overflow",
+        "correct" : true,
+        "order" : 0
+      }, {
+        "text" : "Heap-based buffer overflow",
+        "correct" : false,
+        "order" : 1
+      }, {
+        "text" : "Return-to-libc attack",
+        "correct" : false,
+        "order" : 2
+      }, {
+        "text" : "Format string vulnerability",
+        "correct" : false,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "What is the role of a \"NOP sled\" in a buffer overflow attack?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 11,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "To insert \"no-operation\" instructions to pad the injected shellcode",
+        "correct" : false,
+        "order" : 0
+      }, {
+        "text" : "To slide the stack pointer to a different location in memory",
+        "correct" : false,
+        "order" : 1
+      }, {
+        "text" : "To bypass address space layout randomization (ASLR) protections",
+        "correct" : false,
+        "order" : 2
+      }, {
+        "text" : " To align the memory layout for the injected shellcode",
+        "correct" : true,
+        "order" : 3
+      } ]
+    } ],
+    "instructions" : "Answer questions then go to next level.",
+    "assessment_type" : "TEST"
+  }, {
+    "title" : "Get Access",
+    "level_type" : "ACCESS_LEVEL",
+    "order" : 2,
+    "estimated_duration" : 0,
+    "minimal_possible_solve_time" : null,
+    "passkey" : "start-training-lab-5",
+    "cloud_content" : "Your first task is to access the sandbox, where you will complete all following tasks.\n\n### Sandbox access\n1. In the topology overview on the right, right-click on **`client`** and then click on **`Open console`**, and a new pop-up window will appear. \n2. Login with username **`client`** and password **`password`**. (*You may want to login into the client with multiple session in terminals which maybe easier for doing this lab*)\n3. After you have successfully connected, Submit the answer **`start-training-lab-5`**.\n\nAlternatively, you can use SSH to connect to the machine. SSH access makes it easier to copy-paste commands and flags, but requires more steps to set up. See [documentation](https://docs.crp.kypo.muni.cz/user-guide-advanced/sandboxes/sandbox-access/#user-access) for more details.\n",
+    "local_content" : "Before proceeding further, you need to start a sandbox on your machine. \nPlease clone [this Gitlab repository](https://<link_to_a_repo>) and follow steps in the README file.\nWhen your sandbox is ready at your host, submit the passkey from the README file."
+  }, {
+    "title" : "Buffer 1",
+    "level_type" : "TRAINING_LEVEL",
+    "order" : 3,
+    "estimated_duration" : 10,
+    "minimal_possible_solve_time" : null,
+    "answer" : "10",
+    "answer_variable_name" : null,
+    "content" : "Run the C program to start:\n\n**`./buffer1`**\n\nIt looks like a normal program, but it could potentially be vulnerable to buffer overflow!\n\nQ: How many characters can the program take before the buffer overflow occurs? (number)",
+    "solution" : "It is 10 characters!",
+    "solution_penalized" : true,
+    "hints" : [ ],
+    "incorrect_answer_limit" : 10,
+    "attachments" : [ ],
+    "max_score" : 15,
+    "variant_answers" : false,
+    "reference_solution" : [ ],
+    "mitre_techniques" : [ ],
+    "expected_commands" : [ ],
+    "commands_required" : false
+  }, {
+    "title" : "Explain buffer 1",
+    "level_type" : "INFO_LEVEL",
+    "order" : 4,
+    "estimated_duration" : 0,
+    "minimal_possible_solve_time" : null,
+    "content" : "```\n#include <stdio.h>\n\nint main()\n\n{\n   char name[10];\n\n   printf(\"What is your name?\");\n\n   scanf(\"%s\", name);\n\n   printf(\"Hi, %s\\n\\n\", name);\n\n   return 0;\n\n}\n```\n\nThe code **buffer1** has a buffer overflow vulnerability due to the use of the 'scanf' function without specifying a maximum width for the input. Let's break down how this happens:\n\nThe 'char name[10]'; declares an array name of size 10 characters.\n\nThe 'scanf(\"%s\", name)'; line reads input from the user and stores it in the name array using the %s format specifier.\n\nSince no width is specified for the %s specifier, 'scanf' will continue reading characters from the user until it encounters a whitespace character (space, tab, newline), leaving no room for null-termination or checking the array bounds.\n\nIf the user inputs more than 10 characters, the extra characters will overwrite adjacent memory locations beyond the allocated space of name (i.e., buffer overflow).\n\nBuffer overflow can lead to memory corruption, data leakage, crashes, and even remote code execution if an attacker exploits this vulnerability.\n\nTo fix this, you should use 'scanf(\"%9s\", name)'; to limit the input to at most 9 characters (leaving one for the null-terminator). This way, you prevent the overflow and ensure that the input is properly bounded within the name array."
+  }, {
+    "title" : "Buffer 2",
+    "level_type" : "TRAINING_LEVEL",
+    "order" : 5,
+    "estimated_duration" : 15,
+    "minimal_possible_solve_time" : null,
+    "answer" : "FPT{C-B4FF5R-0vErF1ow}",
+    "answer_variable_name" : null,
+    "content" : "Run the C program to start:\n\n**`./buffer2`**\n\nIn this section, you need to exploit the buffer overflow vulnerability to bypass the password and acquire the flag!\n\nHint: Given that in this code have:\n\nchar input[8];\n\nchar password[8];\n\n## Q: Submit the flag (Format: FPT{*****************})",
+    "solution" : "The answer is **FPT{C-B4FF5R-0vErF1ow}**",
+    "solution_penalized" : true,
+    "hints" : [ {
+      "title" : "Lo0p",
+      "content" : "try redo more than once 8 **same** letters",
+      "hint_penalty" : 5,
+      "order" : 1
+    }, {
+      "title" : "8 letters",
+      "content" : "8, must be 8.",
+      "hint_penalty" : 5,
+      "order" : 0
+    } ],
+    "incorrect_answer_limit" : 10,
+    "attachments" : [ ],
+    "max_score" : 30,
+    "variant_answers" : false,
+    "reference_solution" : [ ],
+    "mitre_techniques" : [ ],
+    "expected_commands" : [ ],
+    "commands_required" : false
+  }, {
+    "title" : "Explain buffer 2",
+    "level_type" : "INFO_LEVEL",
+    "order" : 6,
+    "estimated_duration" : 0,
+    "minimal_possible_solve_time" : null,
+    "content" : "```\n#include <cstdio>\n#include <cstring>\n#include <iostream>\n\nconst char *PASSWORD_FILE = \"f4tl4v\";\n\nint main()\n{\n  char input[8];\n  char password[8];\n\n  std::sscanf(PASSWORD_FILE, \"%s\", password);\n\n  std::cout << \"Enter password: \";\n  std::cin >> input;\n\n  // Debug prints:\n  // std::cout << \"Address of input: \" << &input << \"\\n\";\n  // std::cout << \"Address of password: \" << &password << \"\\n\";\n  // std::cout << \"Input: \" << input << \"\\n\";\n  // std::cout << \"Password: \" << password << \"\\n\";\n\n  if (std::strncmp(password, input, 8) == 0)\n    std::cout << \"Access granted\\nFPT{C-B4FF5R-0vErF1ow}\";\n  else\n    std::cout << \"Access denied\\n\";\n\n  return 0;\n}\n```\n\nThis code has a buffer overflow vulnerability due to the improper handling of input. Let's break down the vulnerable parts step by step:\n\nThe code defines a 'PASSWORD_FILE' constant containing the value \"f4tl4v\".\n\nIt declares two character arrays, input and password, both of size 8 characters.\n\nThe 'sscanf' function is used to read from the 'PASSWORD_FILE' constant and store it in the password array. Since there's no format specifier limiting the length of the read, it can potentially overwrite adjacent memory.\n\nThe code prompts the user to enter a password using 'std::cin', and the input is stored in the input array.\n\nThe code compares the first 8 characters of password with the contents of the input array using 'strncmp'.\n\nNow, the vulnerability arises due to the fact that 'PASSWORD_FILE' is longer than 8 characters (\"f4tl4v\" is 6 characters long), and the 'sscanf' function doesn't have any boundary checks. When the contents of 'PASSWORD_FILE' are copied into the password array, it can overwrite beyond the allocated memory for password. If an input of 8 or more characters is entered by the user, it can overflow into the adjacent memory space, including the input array and other variables.\n\nBy controlling the input length and content, an attacker can manipulate the comparison between password and input, leading to unauthorized access (bypassing the password check) and potentially gaining unintended control over the program's execution.\n\nTo fix this vulnerability, you should ensure that the 'sscanf' function doesn't read more characters than can fit in the password array, and you should properly handle input to prevent buffer overflows.\n\nYou can read more about detail [here](https://snyk.io/blog/buffer-overflow-attacks-in-c/)"
+  } ],
+  "estimated_duration" : 37,
+  "variant_sandboxes" : false
+}

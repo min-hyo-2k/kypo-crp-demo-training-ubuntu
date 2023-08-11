@@ -1,0 +1,481 @@
+{
+  "title" : "LAB 14 - Hijacking HTTPS Sessions with SSLstrip",
+  "description" : "Session hijacking using SSLstrip – a powerful tool used by attackers to intercept and manipulate HTTPS sessions.",
+  "prerequisites" : [ "Prepare SSLstrip lession." ],
+  "outcomes" : [ "Learn how to hijacking sessions of HTTP through SSLstrip tool." ],
+  "state" : "UNRELEASED",
+  "show_stepper_bar" : true,
+  "levels" : [ {
+    "title" : "Introduction",
+    "level_type" : "INFO_LEVEL",
+    "order" : 0,
+    "estimated_duration" : 0,
+    "minimal_possible_solve_time" : null,
+    "content" : "Welcome to Lab 14 of our HOD Labs training series.In this hands-on lab, we will delve into the world of session hijacking using SSLstrip – a powerful tool used by attackers to intercept and manipulate HTTP sessions.\n\nHTTP sessions are vital components of web applications that maintain user state and ensure smooth user interactions. However, without proper security measures, these sessions can become vulnerable to attacks, allowing malicious actors to hijack active sessions and gain unauthorized access to sensitive information.\n\nDuring this lab, you will learn about SSLstrip, a tool developed to exploit the inherent weakness of unencrypted HTTP communication. SSLstrip is designed to downgrade secure HTTPS connections to insecure HTTP, making it possible to capture sensitive data transmitted in plain text, including session cookies, login credentials, and other valuable information.\n\n## Lab Objectives:\nIn this lab, you will:\n\nUnderstand the concept of session hijacking and its significance in web security.\nExplore the functionalities of SSLstrip and its ability to convert HTTPS to HTTP.\nSet up a controlled environment for conducting session hijacking experiments safely.\nIntercept and analyze HTTP traffic to capture session cookies and sensitive data.\nUse hijacked session cookies to gain unauthorized access to web applications.\n## Prerequisites:\nBefore starting this lab, it is essential to have a basic understanding of HTTP, HTTPS, and web application security. Familiarity with tools such as Wireshark and Burp Suite will be beneficial, as we will be utilizing them to capture and analyze network traffic. Additionally, ensure that you have the necessary permissions to conduct these experiments within a controlled environment.\n\n## Lab Environment:\nFor this lab, we will create a controlled environment where you can practice session hijacking using SSLstrip safely. The environment will include web applications with vulnerable session management, allowing you to observe the impact of successful hijacking attempts without causing harm to real-world systems.\n\n## Note: It is crucial to use this knowledge responsibly and refrain from engaging in any unauthorized activities outside the scope of this lab.\n\nJoin us in Lab 14 as we explore the techniques of session hijacking with SSLstrip and gain valuable insights into the importance of securing web applications against such attacks. Let's begin our journey into the fascinating world of session security and ethical hacking!\n\n\n\n\n"
+  }, {
+    "title" : "Quick Knowledge Test",
+    "level_type" : "ASSESSMENT_LEVEL",
+    "order" : 1,
+    "estimated_duration" : 15,
+    "minimal_possible_solve_time" : null,
+    "questions" : [ {
+      "question_type" : "MCQ",
+      "text" : "What is the primary purpose of SSLstrip?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 0,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "To encrypt network traffic between the client and server.",
+        "correct" : false,
+        "order" : 0
+      }, {
+        "text" : "To downgrade secure HTTPS connections to insecure HTTP.",
+        "correct" : true,
+        "order" : 1
+      }, {
+        "text" : "To prevent session hijacking attacks on web applications.",
+        "correct" : false,
+        "order" : 2
+      }, {
+        "text" : "To scan for vulnerabilities in SSL certificates.",
+        "correct" : false,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "Which type of data can be captured using SSLstrip during a session hijacking attack?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 1,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "Encrypted HTTPS traffic.",
+        "correct" : false,
+        "order" : 0
+      }, {
+        "text" : "Sensitive information transmitted over HTTP.",
+        "correct" : false,
+        "order" : 1
+      }, {
+        "text" : "Cookies sent through HTTP headers.",
+        "correct" : true,
+        "order" : 2
+      }, {
+        "text" : "Passwords and credentials exchanged over SSH.",
+        "correct" : false,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "What is the main vulnerability SSLstrip exploits in web communication?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 2,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "Cross-Site Scripting (XSS)",
+        "correct" : false,
+        "order" : 0
+      }, {
+        "text" : "SQL Injection (SQLi)",
+        "correct" : false,
+        "order" : 1
+      }, {
+        "text" : "Session fixation",
+        "correct" : false,
+        "order" : 2
+      }, {
+        "text" : "Lack of encryption in HTTP",
+        "correct" : true,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "Which tool is commonly used to capture and analyze network traffic during session hijacking experiments?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 3,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "Wireshark",
+        "correct" : true,
+        "order" : 0
+      }, {
+        "text" : "Nikto",
+        "correct" : false,
+        "order" : 1
+      }, {
+        "text" : "Nmap",
+        "correct" : false,
+        "order" : 2
+      }, {
+        "text" : "Metasploit",
+        "correct" : false,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "What role do session cookies play in web applications?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 4,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "Encrypting data during transmission.",
+        "correct" : false,
+        "order" : 0
+      }, {
+        "text" : "Maintaining user state and session information.",
+        "correct" : true,
+        "order" : 1
+      }, {
+        "text" : "Providing secure authentication for clients and servers.",
+        "correct" : false,
+        "order" : 2
+      }, {
+        "text" : "Identifying potential security vulnerabilities.",
+        "correct" : false,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "How can web developers protect their applications against SSLstrip attacks?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 5,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "Enforcing HTTPS for all communications.",
+        "correct" : true,
+        "order" : 0
+      }, {
+        "text" : "Blocking all incoming network traffic.",
+        "correct" : false,
+        "order" : 1
+      }, {
+        "text" : "Disabling cookies in the browser.",
+        "correct" : false,
+        "order" : 2
+      }, {
+        "text" : "Running web applications on a different port.",
+        "correct" : false,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "In which phase of a session hijacking attack does SSLstrip convert HTTPS to HTTP?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 6,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "Data interception",
+        "correct" : true,
+        "order" : 0
+      }, {
+        "text" : "Session enumeration",
+        "correct" : false,
+        "order" : 1
+      }, {
+        "text" : "Connection termination",
+        "correct" : false,
+        "order" : 2
+      }, {
+        "text" : "Authentication bypass",
+        "correct" : false,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "Why is it crucial to conduct session hijacking experiments only in a controlled environment?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 7,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "To ensure the legality of the actions taken.",
+        "correct" : false,
+        "order" : 0
+      }, {
+        "text" : "To minimize the risk of exposing sensitive data.",
+        "correct" : true,
+        "order" : 1
+      }, {
+        "text" : "To avoid detection by security tools and firewalls.",
+        "correct" : false,
+        "order" : 2
+      }, {
+        "text" : "To gain remote access to production web servers.",
+        "correct" : false,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "Which of the following statements is true regarding SSLstrip attacks?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 8,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "SSLstrip attacks require physical access to the target network.",
+        "correct" : false,
+        "order" : 0
+      }, {
+        "text" : " SSLstrip attacks are effective only against websites with valid SSL certificates.",
+        "correct" : false,
+        "order" : 1
+      }, {
+        "text" : "SSLstrip attacks exploit vulnerabilities in the browser's cookie storage mechanism.",
+        "correct" : false,
+        "order" : 2
+      }, {
+        "text" : " SSLstrip attacks can be mitigated by implementing HTTP Strict Transport Security (HSTS).",
+        "correct" : true,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "In a successful session hijacking using SSLstrip, an attacker can:",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 9,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "Decrypt previously intercepted HTTPS traffic.",
+        "correct" : false,
+        "order" : 0
+      }, {
+        "text" : "Impersonate the server to the client.",
+        "correct" : false,
+        "order" : 1
+      }, {
+        "text" : "Acquire the server's private SSL key.",
+        "correct" : false,
+        "order" : 2
+      }, {
+        "text" : "Take control of the victim's browser.",
+        "correct" : true,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "Which attack technique can an attacker use in conjunction with SSLstrip to force a victim's browser to connect over HTTP, even if the website originally supported HTTPS?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 10,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "Cross-Site Scripting (XSS)",
+        "correct" : false,
+        "order" : 0
+      }, {
+        "text" : "Man-in-the-Middle (MitM)",
+        "correct" : false,
+        "order" : 1
+      }, {
+        "text" : " Session Fixation",
+        "correct" : false,
+        "order" : 2
+      }, {
+        "text" : "HTTP Header Injection",
+        "correct" : true,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "During a session hijacking attack using SSLstrip, what action can the attacker take to maintain control over the victim's session even if the victim tries to log out?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 11,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "Injecting malicious JavaScript into the browser.",
+        "correct" : false,
+        "order" : 0
+      }, {
+        "text" : "Forging new session cookies with the same values.",
+        "correct" : true,
+        "order" : 1
+      }, {
+        "text" : "Locking the victim out of their account.",
+        "correct" : false,
+        "order" : 2
+      }, {
+        "text" : "Changing the victim's password.",
+        "correct" : false,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "How does HSTS (HTTP Strict Transport Security) help prevent SSLstrip attacks?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 12,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : " It forces web browsers to always use HTTPS connections.",
+        "correct" : true,
+        "order" : 0
+      }, {
+        "text" : "It encrypts session cookies with a secure algorithm.",
+        "correct" : false,
+        "order" : 1
+      }, {
+        "text" : "It disables all HTTP communication on the target server.",
+        "correct" : false,
+        "order" : 2
+      }, {
+        "text" : "It encrypts the SSL certificate used in HTTPS connections.",
+        "correct" : false,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "To counter session hijacking attacks, some websites implement a time-based session expiration mechanism. How can an attacker bypass this countermeasure?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 13,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "Use a rainbow table to crack the session cookies.",
+        "correct" : false,
+        "order" : 0
+      }, {
+        "text" : "Generate session cookies with a future expiration time.",
+        "correct" : false,
+        "order" : 1
+      }, {
+        "text" : "Continuously send requests to keep the session active.",
+        "correct" : true,
+        "order" : 2
+      }, {
+        "text" : "Identify the server's session handling algorithm and predict future session values.",
+        "correct" : false,
+        "order" : 3
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "In a successful SSLstrip attack, what is the primary role of the attacker?",
+      "points" : 5,
+      "penalty" : 5,
+      "order" : 14,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : " Intercept and decrypt HTTPS traffic in real-time.",
+        "correct" : false,
+        "order" : 0
+      }, {
+        "text" : "Exploit vulnerabilities in the target web application.",
+        "correct" : false,
+        "order" : 1
+      }, {
+        "text" : "Downgrade HTTPS connections to unencrypted HTTP.",
+        "correct" : true,
+        "order" : 2
+      }, {
+        "text" : "Capture and analyze network traffic using Wireshark.",
+        "correct" : false,
+        "order" : 3
+      } ]
+    } ],
+    "instructions" : "Answer questions then go to next level.",
+    "assessment_type" : "TEST"
+  }, {
+    "title" : "Get Access",
+    "level_type" : "ACCESS_LEVEL",
+    "order" : 2,
+    "estimated_duration" : 0,
+    "minimal_possible_solve_time" : null,
+    "passkey" : "start-training-lab-14",
+    "cloud_content" : "Your first task is to access the sandbox, where you will complete all following tasks.\n\n### Sandbox access\n1. In the topology overview on the right, right-click on **`client`** and then click on **`Open console`**, and a new pop-up window will appear. \n2. Login with username **`client`** and password **`password`**. (*You may want to login into the client with multiple session in terminals which maybe easier for doing this lab*)\n3. After you have successfully connected, Submit the answer **`start-training-lab-14`**.\n\nAlternatively, you can use SSH to connect to the machine. SSH access makes it easier to copy-paste commands and flags, but requires more steps to set up. See [documentation](https://docs.crp.kypo.muni.cz/user-guide-advanced/sandboxes/sandbox-access/#user-access) for more details.\n",
+    "local_content" : "Before proceeding further, you need to start a sandbox on your machine. \nPlease clone [this Gitlab repository](https://<link_to_a_repo>) and follow steps in the README file.\nWhen your sandbox is ready at your host, submit the passkey from the README file."
+  }, {
+    "title" : "Setup SSLstrip",
+    "level_type" : "TRAINING_LEVEL",
+    "order" : 3,
+    "estimated_duration" : 10,
+    "minimal_possible_solve_time" : null,
+    "answer" : "conda deactivate",
+    "answer_variable_name" : null,
+    "content" : "## Follow these step to setup sslstrip:\n\n1. Elevates the current user's privileges to root\n\n2. Changes the current working directory to **/home/client/sslstrip/**\n\n3. Activates the Conda environment: **. /opt/miniconda3/bin/activate**\n\n4. Creates a new Conda environment named \"sslstrip\" with Python 2.7 and installs the specified packages: **conda create -n sslstrip python=2.7 service_identity pyOpenSSL Twisted**\n\n5. Activates the newly created \"sslstrip\" Conda environment: **conda activate sslstrip**\n\n6. Installs the SSLstrip tool using Python 2: **python2 setup.py install**\n\nYou can read more about CONDA env [here](https://docs.conda.io/en/latest/)\n\n## Q: What command in conda for exit 'sslstrip' environment and back to base environment?",
+    "solution" : "To simply return to the base environment, it's better to call **conda activate** with no environment specified, rather than to try to deactivate. \n\nIf you run ***conda deactivate*** from your base environment, you may lose the ability to run conda at all. Don't worry, that's local to this shell - you can start a new one. However, if the environment was activated using --stack (or was automatically stacked) then it is better to use ***conda deactivate***.",
+    "solution_penalized" : true,
+    "hints" : [ ],
+    "incorrect_answer_limit" : 10,
+    "attachments" : [ ],
+    "max_score" : 15,
+    "variant_answers" : false,
+    "reference_solution" : [ ],
+    "mitre_techniques" : [ ],
+    "expected_commands" : [ ],
+    "commands_required" : false
+  }, {
+    "title" : "Setup SSLstrip advance 1",
+    "level_type" : "TRAINING_LEVEL",
+    "order" : 4,
+    "estimated_duration" : 10,
+    "minimal_possible_solve_time" : null,
+    "answer" : "echo \"0\" > /proc/sys/net/ipv4/ip_forward",
+    "answer_variable_name" : null,
+    "content" : "Enables IP forwarding to allow traffic to be redirected : **echo \"1\" > /proc/sys/net/ipv4/ip_forward**\n\n## Explain:\n\nThe command echo \"1\" > /proc/sys/net/ipv4/ip_forward is used to enable IP forwarding on a Linux system. IP forwarding allows the Linux kernel to act as a router by forwarding network traffic between different network interfaces or subnets. Here's what the command does step by step:\n\n\"echo\" : This is a command in Linux used to print a message or value to the standard output.\n\n\"1\": This is the value that is being printed. In this case, it's the number 1, which signifies enabling IP forwarding.\n\n\">\" : This is a redirection operator in Linux. It redirects the output of the command on the left side of the operator to the file specified on the right side.\n/proc/sys/net/ipv4/ip_forward: This is the path to the sysctl file that controls IP forwarding. The sysctl interface provides a way to modify kernel parameters at runtime.\n\nWhen you execute the command echo \"1\" > /proc/sys/net/ipv4/ip_forward, it writes the value \"1\" to the ip_forward file under /proc/sys/net/ipv4/. This signals to the kernel that IP forwarding should be enabled, allowing the system to route traffic between different network interfaces or subnets.\n\nIt's important to note that changes made using echo to the /proc filesystem are temporary and will be lost after a system reboot. To make the change permanent, you'll need to configure the appropriate settings in the system's network configuration files.\n\n## Q: Base on above command, what command will use to Disable IP forwarding?",
+    "solution" : "Solution is: **echo \"0\" > /proc/sys/net/ipv4/ip_forward**",
+    "solution_penalized" : true,
+    "hints" : [ ],
+    "incorrect_answer_limit" : 10,
+    "attachments" : [ ],
+    "max_score" : 15,
+    "variant_answers" : false,
+    "reference_solution" : [ ],
+    "mitre_techniques" : [ ],
+    "expected_commands" : [ ],
+    "commands_required" : false
+  }, {
+    "title" : "Setup SSLstrip advance 2",
+    "level_type" : "TRAINING_LEVEL",
+    "order" : 5,
+    "estimated_duration" : 10,
+    "minimal_possible_solve_time" : null,
+    "answer" : "iptables -t nat -L",
+    "answer_variable_name" : null,
+    "content" : "Sets up an IPTables rule to redirect incoming HTTP traffic (port 80) to port 6996 (victim open port):\n**iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 6996**\n\n## Explain:\n\nThis command is used to create a rule in the iptables firewall ruleset on a Linux system. It is specifically configuring Network Address Translation (NAT) for incoming TCP traffic on port 80. Let's break down the components of this command:\n\niptables: This is the command-line utility for managing firewall rules in Linux.\n\n-t nat: Specifies the table within iptables where the rule will be added. In this case, it's the NAT table.\n\n-A PREROUTING: Indicates that the rule should be added to the PREROUTING chain of the NAT table. The PREROUTING chain is processed before routing the packets.\n\n-p tcp: Specifies the protocol of the traffic to match, which is TCP.\n\n--destination-port 80: Specifies the destination port number that the rule should match. In this case, it's port 80 (HTTP).\n\n-j REDIRECT: Specifies the target action if the rule criteria are met. In this case, it's the REDIRECT target action, which redirects the packet to a different port.\n\n--to-port 6996: Specifies the port to which the packet should be redirected. In this case, it's port 6996.\n\nOverall, this command is used to redirect incoming TCP traffic destined for port 80 to port 6996 using NAT. This could be useful, for example, if you want to intercept and modify HTTP traffic using a proxy or some other application listening on port 6996.\n\n## Q: What command to lists the current IPTables rules related to NAT (Network Address Translation).",
+    "solution" : "\nThe command \"iptables -t nat -L\" is used to list the current IPTables rules related to the NAT (Network Address Translation) table. IPTables is a powerful firewall tool in Linux that allows the configuration of various rules for packet filtering, network address translation, and other network-related operations.\n\nIn the specific command:\n\n\"iptables\" is the main command used to interact with the IPTables firewall.\n\"-t nat\" specifies that we are working with the NAT table. The NAT table is responsible for modifying the source or destination IP addresses of packets as they pass through the firewall.\n\"-L\" is the option used to list the current rules in the selected table.\nWhen you execute \"iptables -t nat -L\", it will display the rules currently set up in the NAT table. These rules define how network traffic is translated and forwarded by the firewall. The output will show the rules in a tabular format, including the rule number, the target action, the source and destination IP addresses and ports, and other relevant information.\n\nThis command is often used to check the current NAT ruleset and verify if the necessary rules for network address translation, port forwarding, or other NAT-related operations are correctly configured.",
+    "solution_penalized" : true,
+    "hints" : [ ],
+    "incorrect_answer_limit" : 10,
+    "attachments" : [ ],
+    "max_score" : 15,
+    "variant_answers" : false,
+    "reference_solution" : [ ],
+    "mitre_techniques" : [ ],
+    "expected_commands" : [ ],
+    "commands_required" : false
+  }, {
+    "title" : "Hijacking account",
+    "level_type" : "TRAINING_LEVEL",
+    "order" : 6,
+    "estimated_duration" : 10,
+    "minimal_possible_solve_time" : null,
+    "answer" : "test-test",
+    "answer_variable_name" : null,
+    "content" : "Starts SSLstrip with the \"-p\" option (to preserve HTTP traffic) and listens on port 6996(victim port): **sslstrip -p -l 6996**\n\n## Explain:\n\nThe command sslstrip -p -l 6996 is used to run the SSLStrip tool with specific options. SSLStrip is a tool designed to downgrade HTTPS connections to HTTP and capture sensitive information. Here's an explanation of the command and its options:\n\nsslstrip: This is the command to run the SSLStrip tool.\n\n-p: This option tells SSLStrip to enable transparent proxying. When this option is used, SSLStrip will intercept the traffic between the client and the server and attempt to replace HTTPS links with HTTP links, potentially leading to a security vulnerability.\n\n-l 6996: This option specifies the local port that SSLStrip will listen on. In this case, it's set to port 6996. This means that SSLStrip will listen on port 6996 for incoming connections from clients, intercept their traffic, and attempt to strip the HTTPS from the links.\n\nBy using these options together, the command is instructing SSLStrip to operate as a transparent proxy, listening on port 6996, and attempting to strip the HTTPS from URLs in the intercepted traffic. This can expose sensitive information if the user interacts with the compromised HTTP connections. It's important to note that SSLStrip is often used for malicious purposes and can facilitate man-in-the-middle attacks, so it should only be used in controlled, ethical, and legitimate security testing scenarios.\n\n## Q: Now you have to find a file where that contain account's username and password that we're hijacked. (Format: **username-password**)",
+    "solution" : "Displays the content of the \"sslstrip.log\" file in real-time, which contains SSLstrip log information: **tail -f sslstrip.log**\n\nThe answer should be in there.",
+    "solution_penalized" : true,
+    "hints" : [ {
+      "title" : "L0G?",
+      "content" : "What is log? Where is the log? We need the missing log to build the house for Sslstrip man!",
+      "hint_penalty" : 5,
+      "order" : 0
+    } ],
+    "incorrect_answer_limit" : 10,
+    "attachments" : [ ],
+    "max_score" : 15,
+    "variant_answers" : false,
+    "reference_solution" : [ ],
+    "mitre_techniques" : [ ],
+    "expected_commands" : [ ],
+    "commands_required" : false
+  } ],
+  "estimated_duration" : 55,
+  "variant_sandboxes" : false
+}
